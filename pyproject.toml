@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "moove-voice-to-text"
-version = "1.2.4"
+version = "1.0"
 description = "moove-voice-to-text: An agentic AI framework to help doctors take medical notes to aid diagnosis."
 readme = "README.md"
 requires-python = ">=3.10"
