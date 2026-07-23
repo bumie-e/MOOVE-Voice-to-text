@@ -29,7 +29,7 @@ Multi-Agent Orchestration
 
 This architecture aims to treat each component as an agent. The orchestator agent (series of python automation scripts) schedules and handles concurrent requests and assignments to the other agents. It also manages the state of each agent object.
 
-                    [Orchestrator Agent]
+                    [Orchestrator]
                    /         |          \
                   /          |           \
      [STT Agent]   [SOAP Writer Agent]  [Validator Agent]
@@ -70,11 +70,12 @@ This architecture dives into the writer and validator component and define the i
       ├── tool: ask_doctor(question)
       │         → surfaces question to UI, awaits answer
       │
-      ├── tool: fill_section(section, new_content)
+      └── tool: fill_section(section, new_content)
       │         → writes answer into the SOAP object
       │
-      └── tool: finalize_note()
-                → triggers when all sections pass validation
+[End Process]
+      │ finalize_note()
+        → is called when all sections pass validation
 ```
 
 ### Stage 3
@@ -117,8 +118,8 @@ Full architecture. It separates
         If still incomplete → loops back to step 3
         When all sections pass → calls finalize_note()
        
-6. Final SOAP Note
-7. Use finalize_note() step to end the process
+6. Final SOAP Note → is_complete flag is added to the object_state
+7. Orchestrator calls the finalize_note() step to end the process
 
 
 ## Directory Structure
@@ -143,10 +144,9 @@ agentic/
 │   └── validation/
 │       ├── validate_section.py
 │       ├── get_question.py
-│       ├── ask_doctor.py
-│       └── finalize_note.py
+│       └── ask_doctor.py
 ├── state/
-│   ├── soap_note.py        ← SOAP state object
+│   ├── soap_note.py        ← SOAP state object. Also adds the is_complete flag
 │   └── session.py          ← session-level state (doctor, patient, history)
 ├── prompts/
 │   ├── soap_writer.py

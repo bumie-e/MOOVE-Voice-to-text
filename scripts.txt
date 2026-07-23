@@ -1,7 +1,0 @@
-Install datasets on mac. ethdataset is the repo environment
-hf download SilencioNetwork/amharic-speech
-hf download badrex/amharic-speech --repo-type dataset
-
-
-curl -LsSf https://hf.co/cli/install.sh | bash
-curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
