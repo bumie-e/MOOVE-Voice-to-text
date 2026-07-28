@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-LOCAL_DIR="${1:-./datasets}"
+LOCAL_DIR="${./datasets}"
 AMHARIC_DIR="${LOCAL_DIR}/amharic"
 TIGRIGNA_DIR="${LOCAL_DIR}/tigrigna"
 AFAN_OROMO_DIR="${LOCAL_DIR}/afan_oromo"

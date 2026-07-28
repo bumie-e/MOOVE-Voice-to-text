@@ -8,6 +8,12 @@ version = "0.1"
 description = "moove-voice-to-text: An agentic AI framework to help doctors take medical notes to aid diagnosis."
 readme = "README.md"
 requires-python = ">=3.10"
+dependencies = [
+    "torch==2.13.0"
+    "torchcodec==0.15.0"
+    "openai==2.48.0",
+    "pydantic>=2.0.0",
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N"]
@@ -16,3 +22,6 @@ ignore = ["E501", "E402"]   # Avoid enforcing line-length violations (`E501`) an
 
 [tool.ruff.lint.per-file-ignores]
 "**/__init__.py" = ["F401"]
+
+[tool.ty.rules]
+possibly-unresolved-reference = "warn"
